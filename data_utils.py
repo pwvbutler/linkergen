@@ -10,7 +10,7 @@ from smiles_tokenizer import SMILESTokenizer
 
 
 # Numeric property columns in the TSV, in the order they are fed to the model.
-# NOTE: there are SIX of these -> build LinkerGPT with property_dim=6
+# NOTE: there are SIX of these -> build LinkerGen with property_dim=6
 # (or trim this list to the subset you actually want to condition on).
 PROPERTY_COLUMNS = [
     "num_bonds",

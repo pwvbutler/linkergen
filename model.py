@@ -162,7 +162,7 @@ class TransformerDecoder(nn.Module):
         return logits
 
 
-class LinkerGPT(nn.Module):
+class LinkerGen(nn.Module):
     def __init__(self,
         vocab_size,
         d_model=128,

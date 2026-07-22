@@ -8,11 +8,11 @@ from tqdm import tqdm
 # Added HuggingFace transformers imports for SciBERT
 from transformers import AutoTokenizer, AutoModel
 
-from model import LinkerGPT
+from model import LinkerGen
 from smiles_tokenizer import SMILESTokenizer
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Inference and Sampling Script for LinkerGPT via SciBERT Prompts")
+    parser = argparse.ArgumentParser(description="Inference and Sampling Script for LinkerGen via SciBERT Prompts")
     parser.add_argument("--checkpoint", type=str, required=True, help="Path to best_model.pt")
     parser.add_argument("--num_samples", type=int, default=100, help="Number of SMILES to generate")
     parser.add_argument("--max_new_tokens", type=int, default=512, help="Max length of generated SMILES (bumped to prevent truncation)")
@@ -63,7 +63,7 @@ def main():
     # -------------------------------------------------------------
     # 3. Instantiate Model matching Checkpoint Configuration
     # -------------------------------------------------------------
-    model = LinkerGPT(
+    model = LinkerGen(
         vocab_size=vocab_size,
         d_model=config["d_model"],
         d_hidden=config["d_hidden"],

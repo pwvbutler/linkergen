@@ -1,5 +1,5 @@
 """
-Training script for LinkerGPT.
+Training script for LinkerGen.
 
 Two phases share this one script, switched by --conditional:
 
@@ -38,7 +38,7 @@ from data_utils import (
     PROPERTY_COLUMNS,
 )
 
-from model import LinkerGPT
+from model import LinkerGen
 from smiles_tokenizer import SMILESTokenizer
 
 
@@ -323,7 +323,7 @@ def main():
     # Model
     # -------------------------------------------------------------
 
-    model = LinkerGPT(
+    model = LinkerGen(
         vocab_size=vocab_size,
         d_model=args.d_model,
         d_hidden=args.d_hidden,

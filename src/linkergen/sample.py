@@ -145,6 +145,7 @@ def main():
         property_dim=config["property_dim"] if condition_type == "property" else None,
         n_memory=config["n_memory"],
         text_hidden_size=ckpt["text_hidden_size"] if condition_type == "text" else None,
+        n_pool_queries=ckpt["n_pool_queries"] if condition_type == "text" else 1,
     )
     model.load_state_dict(ckpt["model_state_dict"])
     model.to(device)

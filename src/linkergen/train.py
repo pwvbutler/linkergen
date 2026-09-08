@@ -190,6 +190,14 @@ def main():
     )
     parser.add_argument("--n_memory", type=int, default=8, help="--condition property only.")
     parser.add_argument(
+        "--n_pool_queries",
+        type=int,
+        default=1,
+        help="--condition text only: number of learned query vectors "
+             "AttentionPoolingLayer pools the nach0 hidden-state sequence down to "
+             "before cross-attention memory is built.",
+    )
+    parser.add_argument(
         "--nach0_model_name",
         type=str,
         default="insilicomedicine/nach0_base",
@@ -298,6 +306,7 @@ def main():
         property_dim=args.property_dim if args.condition == "property" else None,
         n_memory=args.n_memory,
         text_hidden_size=text_hidden_size,
+        n_pool_queries=args.n_pool_queries,
     )
 
     if args.init_from is not None:
@@ -385,6 +394,7 @@ def main():
                 checkpoint.update(
                     nach0_model_name=args.nach0_model_name,
                     text_hidden_size=text_hidden_size,
+                    n_pool_queries=args.n_pool_queries,
                 )
 
             torch.save(checkpoint, checkpoint_path)

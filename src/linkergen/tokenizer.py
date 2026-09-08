@@ -1,3 +1,5 @@
+"""Regex-based SMILES tokenizer with a fixed set of special tokens."""
+
 import os
 import re
 from typing import Dict, List, Optional, Sequence

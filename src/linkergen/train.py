@@ -192,7 +192,7 @@ def main():
     parser.add_argument(
         "--n_pool_queries",
         type=int,
-        default=1,
+        default=8,
         help="--condition text only: number of learned query vectors "
              "AttentionPoolingLayer pools the nach0 hidden-state sequence down to "
              "before cross-attention memory is built.",

@@ -53,7 +53,6 @@ class TextMemoryEncoder(nn.Module):
             nn.Linear(d_model, d_model),
         )
         self.norm = nn.LayerNorm(d_model)
-        self.dropout = nn.Dropout(dropout)
 
     def forward(self, hidden_states: torch.Tensor) -> torch.Tensor:
         # hidden_states: (B, S, nach0_dim), projected to (B, S, d_model)
@@ -79,7 +78,7 @@ class AttentionPoolingLayer(nn.Module):
             torch.randn(n_queries, d_model) * d_model**-0.5
         )
         self.norm_kv = nn.LayerNorm(d_model)
-        self.norm_q = nn.LayerNorm(d_model)
+        # self.norm_q = nn.LayerNorm(d_model)
         self.learn_mean_correction = learn_mean_correction
         self.attention = MultiHeadAttention(
             d_model=d_model,
@@ -274,7 +273,7 @@ class LinkerGen(nn.Module):
         property_dim=None,
         n_memory=8,
         text_hidden_size=None,
-        n_pool_queries=1,
+        n_pool_queries=8,
         dropout=0.05,
     ):
         super().__init__()

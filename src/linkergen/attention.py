@@ -11,6 +11,7 @@ class MultiHeadAttention(nn.Module):
         super().__init__()
         self.n_heads = n_heads
         self.d_model = d_model
+        assert d_model % n_heads == 0, f"d_model ({d_model}) must be divisible by n_heads ({n_heads})"
         self.d_k = d_model // n_heads
 
         self.query_weights = nn.Linear(d_model, d_model)
